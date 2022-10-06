@@ -81,38 +81,39 @@ html_arrumado = BeautifulSoup(html_bruto, 'html.parser')
 lista_album_transp = html_arrumado.find_all('td',{'style':'text-align: left; vertical-align: top;'})
 print(lista_album_transp)
 
-#######################################ALBUM Preço Curto... Prazo Longo#######################################
+###################ALBUM Preço Curto... Prazo Longo###################
 lista_album_curto = html_arrumado.find_all('td',{'style':'text-align: left; vertical-align: top;'})
 print(lista_album_curto)
 
-###################ALBUM Nadando com os Tubarões############################
+###################ALBUM Nadando com os Tubarões###################
 lista_album_nadando = html_arrumado.find_all('td',{'style':'text-align: left; vertical-align: top;'})
 print(lista_album_nadando)
 
-#################100% Charlie Brown Jr. - Abalando a Sua Fábrica############################### 
+###################100% Charlie Brown Jr. - Abalando a Sua Fábrica###################
 lista_album_abalando = html_arrumado.find_all('td',{'style':'text-align: left; vertical-align: top;'})
 print(lista_album_abalando)
 
-###################ALBUM Bocas Ordinárias############################
+###################ALBUM Bocas Ordinárias###################
 lista_album_bocas = html_arrumado.find_all('td',{'style':'text-align: left; vertical-align: top;'})
 print(lista_album_bocas)
 
-####################ALBUM Tamo Aí na Atividade########################### 
+###################ALBUM Tamo Aí na Atividade###################
 lista_album_tamo = html_arrumado.find_all('td',{'style':'text-align: left; vertical-align: top;'})
 print(lista_album_tamo)
 
-#####################ALBUM Imunidade Musical##########################
+###################ALBUM Imunidade Musical###################
 lista_album_imunidade = html_arrumado.find_all('td',{'style':'text-align: left; vertical-align: top;'})
 print(lista_album_imunidade)
 
-#################Ritmo, Ritual e Responsa############################### 
+###################Ritmo, Ritual e Responsa###################
 lista_album_ritmo = html_arrumado.find_all('td',{'style':'text-align: left; vertical-align: top;'})
 print(lista_album_ritmo)
 
-####################Camisa 10 Joga Bola Até na Chuva#############################
+###################Camisa 10 Joga Bola Até na Chuva###################
 lista_album_camisa = html_arrumado.find_all('td',{'style':'text-align: left; vertical-align: top;'})
 print(lista_album_camisa)
-####################ALBUM La Familia 013##############################
+
+###################ALBUM La Familia 013###################
 lista_album_la = html_arrumado.find_all('td',{'style':'text-align: left; vertical-align: top;'})
 print(lista_album_la)
 
