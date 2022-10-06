@@ -35,8 +35,8 @@ duracao_album_transp = html_arrumado.find_all('td', {'style': 'padding-right: 10
 
 musicas_ordem_duracao = []
 for musica in duracao_album_transp:
-    nome_musica = musica.text
-    musicas_ordem_duracao.append(nome_musica)
+    nome_musica_duracao = musica.text
+    musicas_ordem_duracao.append(nome_musica_duracao)
 
 
 musicas_ordem_duracao = [item.replace("\xa0", "") for item in musicas_ordem_duracao]
@@ -75,7 +75,7 @@ del musicas_ordem2[::2]
 musicas_ordem2_duracao = []
 for musica in duracao_preco:
     nome_musica2_duracao = musica.text
-    musicas_ordem2_duracao.append(nome_musica2)
+    musicas_ordem2_duracao.append(nome_musica2_duracao)
 del musicas_ordem2_duracao[::2]
 print(musicas_ordem2_duracao)
 
@@ -106,8 +106,8 @@ duracao_nadando = html_arrumado.find_all('td',
 
 musicas_ordem3_duracao = []
 for musica in duracao_nadando:
-    nome_musica3 = musica.text
-    musicas_ordem3_duracao.append(nome_musica3)
+    nome_musica3_duracao = musica.text
+    musicas_ordem3_duracao.append(nome_musica3_duracao)
 del musicas_ordem3_duracao[::2]
 print(musicas_ordem3_duracao)
 #######################
@@ -136,8 +136,8 @@ duracao_abalando = html_arrumado.find_all('td',
 
 musicas_ordem4_duracao = []
 for musica in duracao_abalando:
-    nome_musica4 = musica.text
-    musicas_ordem4_duracao.append(nome_musica4)
+    nome_musica4_duracao = musica.text
+    musicas_ordem4_duracao.append(nome_musica4_duracao)
 del musicas_ordem4_duracao[::2]
 print(musicas_ordem4_duracao)
 
@@ -165,8 +165,8 @@ duracao_bocas = html_arrumado.find_all('td',{'style': 'padding-right: 10px; text
 
 musicas_ordem5_duracao = []
 for musica in duracao_bocas:
-    nome_musica5 = musica.text
-    musicas_ordem5_duracao.append(nome_musica5)
+    nome_musica5_duracao = musica.text
+    musicas_ordem5_duracao.append(nome_musica5_duracao)
 del musicas_ordem5_duracao[::2]
 print(musicas_ordem5_duracao)
 
@@ -193,8 +193,8 @@ duracao_tamoai = html_arrumado.find_all('td', {'style': 'padding-right: 10px; te
 
 musicas_ordem6_duracao = []
 for musica in duracao_tamoai:
-    nome_musica6 = musica.text
-    musicas_ordem6_duracao.append(nome_musica6)
+    nome_musica6_duracao = musica.text
+    musicas_ordem6_duracao.append(nome_musica6_duracao)
 del musicas_ordem6_duracao[::2]
 print(musicas_ordem6_duracao)
 
@@ -221,8 +221,8 @@ duracao_imunidade = html_arrumado.find_all('td', {'style': 'padding-right: 10px;
 
 musicas_ordem7_duracao = []
 for musica in duracao_imunidade:
-    nome_musica7 = musica.text
-    musicas_ordem7_duracao.append(nome_musica7)
+    nome_musica7_duracao = musica.text
+    musicas_ordem7_duracao.append(nome_musica7_duracao)
 del musicas_ordem7_duracao[::2]
 print(musicas_ordem7_duracao)
 
@@ -250,8 +250,8 @@ duracao_ritmo = html_arrumado.find_all('td',
 
 musicas_ordem8_duracao = []
 for musica in duracao_ritmo:
-    nome_musica8 = musica.text
-    musicas_ordem8_duracao.append(nome_musica8)
+    nome_musica8_duracao = musica.text
+    musicas_ordem8_duracao.append(nome_musica8_duracao)
 del musicas_ordem8_duracao[::2]
 print(musicas_ordem8_duracao)
 
@@ -278,8 +278,8 @@ duracao_camisa = html_arrumado.find_all('td', {'style': 'padding-right: 10px; te
 
 musicas_ordem9_duracao = []
 for musica in duracao_camisa:
-    nome_musica9 = musica.text
-    musicas_ordem9_duracao.append(nome_musica9)
+    nome_musica9_duracao = musica.text
+    musicas_ordem9_duracao.append(nome_musica9_duracao)
 del musicas_ordem9_duracao[::2]
 print(musicas_ordem9_duracao)
 
@@ -306,7 +306,7 @@ duracao_013 = html_arrumado.find_all('td', {'style': 'padding-right: 10px; text-
 
 musicas_ordem10_duracao = []
 for musica in duracao_013:
-    nome_musica10 = musica.text
-    musicas_ordem10_duracao.append(nome_musica10)
+    nome_musica10_duracao = musica.text
+    musicas_ordem10_duracao.append(nome_musica10_duracao)
 del musicas_ordem10_duracao[::2]
 print(musicas_ordem10_duracao)
