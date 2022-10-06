@@ -135,25 +135,39 @@ menos_duradouras = df_duracao_transpiracao.sort_values(by = 'Duração da Músic
 top_mais_duradouras = mais_duradouras[:3]
 top_menos_duradouras = menos_duradouras[:3]
 
-print(mais_duradouras)
-print('#'*30)
-print(menos_duradouras)
-print('#'*30)
-print(top_mais_duradouras)
-print('#'*30)
-print(top_menos_duradouras)
-print('#'*30)
+#print(mais_duradouras)
+#print(menos_duradouras)
 
+print(top_mais_duradouras)
+
+print(top_menos_duradouras)
 
 print('#'*30)
 
 df_duracao_preco = pd.DataFrame(zip(musicas_preco, tempos_preco), columns = ['Nome da Música', 'Duração da Música'])
 print(df_duracao_preco)
 
-print('#'*30)
+mais_duradouras_preco = df_duracao_preco.sort_values(by = 'Duração da Música', ascending = False)
+menos_duradouras_preco = df_duracao_preco.sort_values(by = 'Duração da Música', ascending = True)
 
+top_mais_duradouras_preco = mais_duradouras_preco[:3]
+top_menos_duradouras_preco = menos_duradouras_preco[:3]
+
+print(top_mais_duradouras_preco)
+print(top_menos_duradouras_preco)
+
+###################################
 df_duracao_nadando = pd.DataFrame(zip(musicas_nadando, tempos_nadando), columns = ['Nome da Música', 'Duração da Música'])
 print(df_duracao_nadando)
+
+mais_duradouras_preco = df_duracao_preco.sort_values(by = 'Duração da Música', ascending = False)
+menos_duradouras_preco = df_duracao_preco.sort_values(by = 'Duração da Música', ascending = True)
+
+top_mais_duradouras_preco = mais_duradouras_preco[:3]
+top_menos_duradouras_preco = menos_duradouras_preco[:3]
+
+print(top_mais_duradouras_preco)
+print(top_menos_duradouras_preco)
 
 print('#'*30)
 
