@@ -150,7 +150,58 @@ for musica in lista_album_nadando:
 print(musicas_ordem3)
 
 ####################################
+#Obtendo a variável que ordena as músicas por mais ouvida para utilizar futuramente no código
+musicas_ordem4 = []
+for musica in lista_album_abalando:
+   nome_musica4 = musica.text
+   musicas_ordem4.append(nome_musica4)
+print(musicas_ordem4)
+#################################
 
+#Obtendo a variável que ordena as músicas por mais ouvida para utilizar futuramente no código
+musicas_ordem5 = []
+for musica in lista_album_bocas:
+   nome_musica5 = musica.text
+   musicas_ordem5.append(nome_musica5)
+print(musicas_ordem5)
+##############################
+musicas_ordem6 = []
+for musica in lista_album_tamo:
+   nome_musica6 = musica.text
+   musicas_ordem6.append(nome_musica6)
+print(musicas_ordem6)
+############################
+
+#Obtendo a variável que ordena as músicas por mais ouvida para utilizar futuramente no código
+musicas_ordem7 = []
+for musica in lista_album_imunidade:
+   nome_musica7 = musica.text
+   musicas_ordem7.append(nome_musica7)
+print(musicas_ordem7)
+###########################
+
+#Obtendo a variável que ordena as músicas por mais ouvida para utilizar futuramente no código
+musicas_ordem8 = []
+for musica in lista_album_ritmo:
+   nome_musica8 = musica.text
+   musicas_ordem8.append(nome_musica8)
+print(musicas_ordem8)
+################################
+
+#Obtendo a variável que ordena as músicas por mais ouvida para utilizar futuramente no código
+musicas_ordem9 = []
+for musica in lista_album_camisa:
+   nome_musica9 = musica.text
+   musicas_ordem9.append(nome_musica9)
+print(musicas_ordem9)
+
+#########################
+#Obtendo a variável que ordena as músicas por mais ouvida para utilizar futuramente no código
+musicas_ordem10 = []
+for musica in lista_album_la:
+   nome_musica10 = musica.text
+   musicas_ordem10.append(nome_musica10)
+print(musicas_ordem10)
 
 #------------------------------
 
@@ -173,6 +224,46 @@ musicas_ordem3 = [item.replace('"', "") for item in musicas_ordem3]
 print(musicas_ordem3)
 
 #################################
+musicas_ordem4 = [item.replace("\xa0", "") for item in musicas_ordem4]
+musicas_ordem4 = [item.replace("\n", "") for item in musicas_ordem4]
+musicas_ordem4 = [item.replace('"', "") for item in musicas_ordem4]
+print(musicas_ordem4)
+##############################
+
+musicas_ordem5 = [item.replace("\xa0", "") for item in musicas_ordem5]
+musicas_ordem5 = [item.replace("\n", "") for item in musicas_ordem5]
+musicas_ordem5 = [item.replace('"', "") for item in musicas_ordem5]
+print(musicas_ordem5)
+
+##############################
+musicas_ordem6 = [item.replace("\xa0", "") for item in musicas_ordem6]
+musicas_ordem6 = [item.replace("\n", "") for item in musicas_ordem6]
+musicas_ordem6 = [item.replace('"', "") for item in musicas_ordem6]
+print(musicas_ordem6)
+###############################
+musicas_ordem7 = [item.replace("\xa0", "") for item in musicas_ordem7]
+musicas_ordem7 = [item.replace("\n", "") for item in musicas_ordem7]
+musicas_ordem7 = [item.replace('"', "") for item in musicas_ordem7]
+print(musicas_ordem7)
+#################################
+
+musicas_ordem8 = [item.replace("\xa0", "") for item in musicas_ordem8]
+musicas_ordem8 = [item.replace("\n", "") for item in musicas_ordem8]
+musicas_ordem8 = [item.replace('"', "") for item in musicas_ordem8]
+print(musicas_ordem8)
+###############################
+
+musicas_ordem9 = [item.replace("\xa0", "") for item in musicas_ordem9]
+musicas_ordem9 = [item.replace("\n", "") for item in musicas_ordem9]
+musicas_ordem9 = [item.replace('"', "") for item in musicas_ordem9]
+print(musicas_ordem9)
+
+#######################
+
+musicas_ordem10 = [item.replace("\xa0", "") for item in musicas_ordem10]
+musicas_ordem10 = [item.replace("\n", "") for item in musicas_ordem10]
+musicas_ordem10 = [item.replace('"', "") for item in musicas_ordem10]
+print(musicas_ordem10)
 
 #-------------------------------------
 
@@ -196,6 +287,46 @@ print(lista_album_nadando)
 
 ##########################################
 
+#Buscando a minutagem das músicas na estrutura html através de seus atributos que foram encontrados por meio da funcionalidade inspecionar do navegador 
+lista_album_abalando = html_arrumado.find_all('td',{'style':'padding-right: 10px; text-align: right; vertical-align: top;'})
+#Conferindo o se o número de músicas encontradas condiz com o esperado
+print(lista_album_abalando)
+######################################
+
+#Buscando a minutagem das músicas na estrutura html através de seus atributos que foram encontrados por meio da funcionalidade inspecionar do navegador 
+lista_album_bocas = html_arrumado.find_all('td',{'style':'padding-right: 10px; text-align: right; vertical-align: top;'})
+#Conferindo o se o número de músicas encontradas condiz com o esperado
+print(lista_album_bocas)
+
+######################################
+#Buscando a minutagem das músicas na estrutura html através de seus atributos que foram encontrados por meio da funcionalidade inspecionar do navegador 
+lista_album_tamo = html_arrumado.find_all('td',{'style':'padding-right: 10px; text-align: right; vertical-align: top;'})
+#Conferindo o se o número de músicas encontradas condiz com o esperado
+print(lista_album_tamo)
+#####################################
+#Buscando a minutagem das músicas na estrutura html através de seus atributos que foram encontrados por meio da funcionalidade inspecionar do navegador 
+lista_album_imunidade = html_arrumado.find_all('td',{'style':'padding-right: 10px; text-align: right; vertical-align: top;'})
+#Conferindo o se o número de músicas encontradas condiz com o esperado
+print(lista_album_imunidade)
+##################################
+
+#Buscando a minutagem das músicas na estrutura html através de seus atributos que foram encontrados por meio da funcionalidade inspecionar do navegador 
+lista_album_ritmo = html_arrumado.find_all('td',{'style':'padding-right: 10px; text-align: right; vertical-align: top;'})
+#Conferindo o se o número de músicas encontradas condiz com o esperado
+print(lista_album_ritmo)
+######################################
+
+#Buscando a minutagem das músicas na estrutura html através de seus atributos que foram encontrados por meio da funcionalidade inspecionar do navegador 
+lista_album_camisa = html_arrumado.find_all('td',{'style':'padding-right: 10px; text-align: right; vertical-align: top;'})
+#Conferindo o se o número de músicas encontradas condiz com o esperado
+print(lista_album_camisa)
+
+#######################################
+
+#Buscando a minutagem das músicas na estrutura html através de seus atributos que foram encontrados por meio da funcionalidade inspecionar do navegador 
+lista_album_la = html_arrumado.find_all('td',{'style':'padding-right: 10px; text-align: right; vertical-align: top;'})
+#Conferindo o se o número de músicas encontradas condiz com o esperado
+print(lista_album_la)
 
 
 #----------------------------------
@@ -222,21 +353,54 @@ print(musicas_ordem3)
 
 ###########################
 
-#--------------------------------
+musicas_ordem4 = []
+for musica in lista_album_abalando:
+   nome_musica4 = musica.text
+   musicas_ordem4.append(nome_musica4)
+print(musicas_ordem4)
 
-musicas_ordem = [item.replace("\xa0", "") for item in musicas_ordem]
-musicas_ordem = [item.replace("\n", "") for item in musicas_ordem]
-musicas_ordem = [item.replace('"', "") for item in musicas_ordem]
-print(musicas_ordem)
+###########################
 
-####################################
+musicas_ordem5 = []
+for musica in lista_album_bocas:
+   nome_musica5 = musica.text
+   musicas_ordem5.append(nome_musica5)
+print(musicas_ordem5)
 
-musicas_ordem2 = [item.replace("\xa0", "") for item in musicas_ordem2]
-musicas_ordem2 = [item.replace("\n", "") for item in musicas_ordem2]
-musicas_ordem2 = [item.replace('"', "") for item in musicas_ordem2]
-print(musicas_ordem2)
+################################
 
+musicas_ordem6 = []
+for musica in lista_album_tamo:
+   nome_musica6 = musica.text
+   musicas_ordem6.append(nome_musica6)
+print(musicas_ordem6)
+############################
+musicas_ordem7 = []
+for musica in lista_album_imunidade:
+   nome_musica7 = musica.text
+   musicas_ordem7.append(nome_musica7)
+print(musicas_ordem7)
+##############################
 
+musicas_ordem8 = []
+for musica in lista_album_ritmo:
+   nome_musica8 = musica.text
+   musicas_ordem8.append(nome_musica8)
+print(musicas_ordem8)
 
+#################################
 
+musicas_ordem9 = []
+for musica in lista_album_camisa:
+   nome_musica9 = musica.text
+   musicas_ordem9.append(nome_musica9)
+print(musicas_ordem9)
+
+#######################################
+
+musicas_ordem10 = []
+for musica in lista_album_la:
+   nome_musica10 = musica.text
+   musicas_ordem10.append(nome_musica10)
+print(musicas_ordem10)
 
