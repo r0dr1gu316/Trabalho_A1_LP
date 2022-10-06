@@ -45,8 +45,31 @@ print(musicas_ordem)
 
 
 
+link2 = requests.get('https://pt.wikipedia.org/wiki/Pre%C3%A7o_Curto..._Prazo_Longo',
+                       headers = user)
+html_bruto = link2.text
+html_arrumado = BeautifulSoup(html_bruto, 'html.parser')
 
+lista_album_curto = html_arrumado.find_all('td',{'style':'text-align: left; vertical-align: top;'})
 
+musicas_ordem2 = []
+for musica in lista_album_curto:
+   nome_musica2 = musica.text
+   musicas_ordem2.append(nome_musica2)
+#print(musicas_ordem2)
+
+musicas_ordem2 = [item.replace("\xa0", "") for item in musicas_ordem2]
+musicas_ordem2 = [item.replace("\n", "") for item in musicas_ordem2]
+musicas_ordem2 = [item.replace('"', "") for item in musicas_ordem2]
+print(musicas_ordem2)
+
+lista_album_curto = html_arrumado.find_all('td',{'style':'padding-right: 10px; text-align: right; vertical-align: top;'})
+
+musicas_ordem2 = []
+for musica in lista_album_curto:
+   nome_musica2 = musica.text
+   musicas_ordem2.append(nome_musica2)
+print(musicas_ordem2)
 
 
 
