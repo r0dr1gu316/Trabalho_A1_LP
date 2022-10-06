@@ -122,86 +122,53 @@ print('#'*30)
 
 
 
-
 df_duracao_transpiracao = pd.DataFrame(zip(musicas_transpiracao, tempos_transpiracao), columns = ['Nome da Música', 'Duração da Música'])
-print(df_duracao_transpiracao)
-
-print('#'*30)
-
-mais_duradouras = df_duracao_transpiracao.sort_values(by = 'Duração da Música', ascending = False)
-menos_duradouras = df_duracao_transpiracao.sort_values(by = 'Duração da Música', ascending = True)
-
-
-top_mais_duradouras = mais_duradouras[:3]
-top_menos_duradouras = menos_duradouras[:3]
-
-#print(mais_duradouras)
-#print(menos_duradouras)
-
-print(top_mais_duradouras)
-
-print(top_menos_duradouras)
-
-print('#'*30)
-
 df_duracao_preco = pd.DataFrame(zip(musicas_preco, tempos_preco), columns = ['Nome da Música', 'Duração da Música'])
-print(df_duracao_preco)
-
-mais_duradouras_preco = df_duracao_preco.sort_values(by = 'Duração da Música', ascending = False)
-menos_duradouras_preco = df_duracao_preco.sort_values(by = 'Duração da Música', ascending = True)
-
-top_mais_duradouras_preco = mais_duradouras_preco[:3]
-top_menos_duradouras_preco = menos_duradouras_preco[:3]
-
-print(top_mais_duradouras_preco)
-print(top_menos_duradouras_preco)
-
-###################################
 df_duracao_nadando = pd.DataFrame(zip(musicas_nadando, tempos_nadando), columns = ['Nome da Música', 'Duração da Música'])
-print(df_duracao_nadando)
-
-mais_duradouras_preco = df_duracao_preco.sort_values(by = 'Duração da Música', ascending = False)
-menos_duradouras_preco = df_duracao_preco.sort_values(by = 'Duração da Música', ascending = True)
-
-top_mais_duradouras_preco = mais_duradouras_preco[:3]
-top_menos_duradouras_preco = menos_duradouras_preco[:3]
-
-print(top_mais_duradouras_preco)
-print(top_menos_duradouras_preco)
-
-print('#'*30)
-
 df_duracao_abalando = pd.DataFrame(zip(musicas_abalando, tempos_abalando), columns = ['Nome da Música', 'Duração da Música'])
-print(df_duracao_abalando)
-
-print('#'*30)
-
 df_duracao_bocas= pd.DataFrame(zip(musicas_bocas, tempos_bocas), columns = ['Nome da Música', 'Duração da Música'])
-print(df_duracao_bocas)
-
-print('#'*30)
-
 df_duracao_tamoai = pd.DataFrame(zip(musicas_tamoai, tempos_tamoai), columns = ['Nome da Música', 'Duração da Música'])
-print(df_duracao_tamoai)
-
-print('#'*30)
-
 df_duracao_imunidade = pd.DataFrame(zip(musicas_imunidade, tempos_imunidade), columns = ['Nome da Música', 'Duração da Música'])
-print(df_duracao_imunidade)
-
-print('#'*30)
-
 df_duracao_ritmo = pd.DataFrame(zip(musicas_ritmo, tempos_ritmo), columns = ['Nome da Música', 'Duração da Música'])
-print(df_duracao_ritmo)
-
-print('#'*30)
-
 df_duracao_camisa = pd.DataFrame(zip(musicas_camisa, tempos_camisa), columns = ['Nome da Música', 'Duração da Música'])
-print(df_duracao_camisa)
-
-print('#'*30)
-
 df_duracao_013 = pd.DataFrame(zip(musicas_013, tempos_013), columns = ['Nome da Música', 'Duração da Música'])
-print(df_duracao_013)
 
+def minutagem(tempo):
+    mais_duradouras = tempo.sort_values(by = 'Duração da Música', ascending = False)
+    menos_duradouras = tempo.sort_values(by = 'Duração da Música', ascending = True)
+    
+    top_mais_duradouras = mais_duradouras[:3]
+    top_menos_duradouras = menos_duradouras[:3]
+    print('Mais longas:','\n',top_mais_duradouras,'\n\n', 'Mais Curtas:', top_menos_duradouras)
+    return 
+
+top_mais_duradouras_transpiracao = minutagem(df_duracao_transpiracao)
+print(top_mais_duradouras_transpiracao)
+
+top_mais_duradouras_preco = minutagem(df_duracao_preco)
+print(top_mais_duradouras_preco)
+
+top_mais_duradouras_nadando = minutagem(df_duracao_nadando)
+print(top_mais_duradouras_nadando)
+
+top_mais_duradouras_abalando = minutagem(df_duracao_abalando)
+print(top_mais_duradouras_abalando)
+
+top_mais_duradouras_bocas = minutagem(df_duracao_bocas)
+print(top_mais_duradouras_bocas)
+
+top_mais_duradouras_tamoai = minutagem(df_duracao_tamoai)
+print(top_mais_duradouras_tamoai)
+
+top_mais_duradouras_imunidade = minutagem(df_duracao_imunidade)
+print(top_mais_duradouras_imunidade)
+
+top_mais_duradouras_ritmo = minutagem(df_duracao_ritmo)
+print(top_mais_duradouras_ritmo)
+
+top_mais_duradouras_camisa = minutagem(df_duracao_camisa)
+print(top_mais_duradouras_camisa)
+
+top_mais_duradouras_013 = minutagem(df_duracao_013)
+print(top_mais_duradouras_013)
 
