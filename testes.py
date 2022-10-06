@@ -10,7 +10,6 @@ user = {"user-agent": "Mozilla/5.0"}
 link1= requests.get('https://pt.wikipedia.org/wiki/Transpira%C3%A7%C3%A3o_Cont%C3%ADnua_Prolongada',
                        headers = user)
 html_bruto = link1.text
-#Arrumando o html com o html.parser
 html_arrumado = BeautifulSoup(html_bruto, 'html.parser')
 
 #Buscando as músicas na estrutura html através de seus atributos que foram encontrados por meio da funcionalidade inspecionar do navegador 
@@ -30,7 +29,6 @@ print(musicas_ordem)
 
 lista_album_transp = html_arrumado.find_all('td',{'style':'padding-right: 10px; text-align: right; vertical-align: top;'})
 
-
 musicas_ordem = []
 for musica in lista_album_transp:
    nome_musica = musica.text
@@ -41,10 +39,7 @@ musicas_ordem = [item.replace("\xa0", "") for item in musicas_ordem]
 musicas_ordem = [item.replace("\n", "") for item in musicas_ordem]
 musicas_ordem = [item.replace('"', "") for item in musicas_ordem]
 print(musicas_ordem)
-
-
 ##############################
-
 link2 = requests.get('https://pt.wikipedia.org/wiki/Pre%C3%A7o_Curto..._Prazo_Longo',
                        headers = user)
 html_bruto = link2.text
@@ -78,7 +73,6 @@ user = {"user-agent": "Mozilla/5.0"}
 link3 = requests.get('https://pt.wikipedia.org/wiki/Nadando_com_os_Tubar%C3%B5es',
                        headers = user)
 html_bruto = link3.text
-#Arrumando o html com o html.parser
 html_arrumado = BeautifulSoup(html_bruto, 'html.parser')
 
 lista_album_nadando = html_arrumado.find_all('td',{'style':'text-align: left; vertical-align: top;'})
@@ -107,7 +101,6 @@ user = {"user-agent": "Mozilla/5.0"}
 link4 = requests.get('https://pt.wikipedia.org/wiki/100%25_Charlie_Brown_Jr._-_Abalando_a_Sua_F%C3%A1brica',
                        headers = user)
 html_bruto = link4.text
-#Arrumando o html com o html.parser
 html_arrumado = BeautifulSoup(html_bruto, 'html.parser')
 
 lista_album_abalando = html_arrumado.find_all('td',{'style':'text-align: left; vertical-align: top;'})
@@ -131,13 +124,11 @@ for musica in lista_album_abalando:
   
 print(musicas_ordem4)
 
-
 ###############################
 
 link5 = requests.get('https://pt.wikipedia.org/wiki/Bocas_Ordin%C3%A1rias',
                        headers = user)
 html_bruto = link5.text
-#Arrumando o html com o html.parser
 html_arrumado = BeautifulSoup(html_bruto, 'html.parser')
 
 lista_album_bocas = html_arrumado.find_all('td',{'style':'text-align: left; vertical-align: top;'})
@@ -161,11 +152,9 @@ for musica in lista_album_bocas:
 print(musicas_ordem5)
 
 #################################
-
 link6 = requests.get('https://pt.wikipedia.org/wiki/Tamo_A%C3%AD_na_Atividade',
                        headers = user)
 html_bruto = link6.text
-#Arrumando o html com o html.parser
 html_arrumado = BeautifulSoup(html_bruto, 'html.parser')
 
 lista_album_tamo = html_arrumado.find_all('td',{'style':'text-align: left; vertical-align: top;'})
@@ -189,11 +178,9 @@ for musica in lista_album_tamo:
 print(musicas_ordem6)
 
 ###############################
-
 link7 = requests.get('https://pt.wikipedia.org/wiki/Imunidade_Musical',
                        headers = user)
 html_bruto = link7.text
-#Arrumando o html com o html.parser
 html_arrumado = BeautifulSoup(html_bruto, 'html.parser')
 
 lista_album_imunidade = html_arrumado.find_all('td',{'style':'text-align: left; vertical-align: top;'})
@@ -220,7 +207,6 @@ print(musicas_ordem7)
 link8 = requests.get('https://pt.wikipedia.org/wiki/Ritmo,_Ritual_e_Responsa',
                        headers = user)
 html_bruto = link8.text
-#Arrumando o html com o html.parser
 html_arrumado = BeautifulSoup(html_bruto, 'html.parser')
 
 lista_album_ritmo = html_arrumado.find_all('td',{'style':'text-align: left; vertical-align: top;'})
@@ -244,11 +230,9 @@ for musica in lista_album_ritmo:
 print(musicas_ordem8)
 
 ########################################
-
 link9 = requests.get('https://pt.wikipedia.org/wiki/Camisa_10_Joga_Bola_At%C3%A9_na_Chuva',
                        headers = user)
 html_bruto = link9.text
-#Arrumando o html com o html.parser
 html_arrumado = BeautifulSoup(html_bruto, 'html.parser')
 
 lista_album_camisa = html_arrumado.find_all('td',{'style':'text-align: left; vertical-align: top;'})
@@ -272,11 +256,9 @@ for musica in lista_album_camisa:
 print(musicas_ordem9)
 
 ###################################
-
 link10 = requests.get('https://pt.wikipedia.org/wiki/La_Familia_013',
                        headers = user)
 html_bruto = link10.text
-#Arrumando o html com o html.parser
 html_arrumado = BeautifulSoup(html_bruto, 'html.parser')
 
 lista_album_la = html_arrumado.find_all('td',{'style':'text-align: left; vertical-align: top;'})
