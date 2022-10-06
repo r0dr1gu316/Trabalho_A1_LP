@@ -21,7 +21,7 @@ musicas_ordem = []
 for musica in lista_album_transp:
     nome_musica = musica.text
     musicas_ordem.append(nome_musica)
-#print(musicas_ordem)
+
 
 musicas_ordem = [item.replace("\xa0", "") for item in musicas_ordem]
 musicas_ordem = [item.replace("\n", "") for item in musicas_ordem]
@@ -31,14 +31,13 @@ del musicas_ordem [16:]
 print(musicas_ordem)
 
 
-lista_album_transp = html_arrumado.find_all('td',
-                                            {'style': 'padding-right: 10px; text-align: right; vertical-align: top;'})
+duracao_album_transp = html_arrumado.find_all('td', {'style': 'padding-right: 10px; text-align: right; vertical-align: top;'})
 
 musicas_ordem = []
-for musica in lista_album_transp:
+for musica in duracao_album_transp:
     nome_musica = musica.text
     musicas_ordem.append(nome_musica)
-#print(musicas_ordem)
+
 
 musicas_ordem = [item.replace("\xa0", "") for item in musicas_ordem]
 musicas_ordem = [item.replace("\n", "") for item in musicas_ordem]
@@ -55,10 +54,10 @@ link2 = requests.get('https://pt.wikipedia.org/wiki/Pre%C3%A7o_Curto..._Prazo_Lo
 html_bruto = link2.text
 html_arrumado = BeautifulSoup(html_bruto, 'html.parser')
 
-lista_album_curto = html_arrumado.find_all('td', {'style': 'text-align: left; vertical-align: top;'})
+lista_album_preco = html_arrumado.find_all('td', {'style': 'text-align: left; vertical-align: top;'})
 
 musicas_ordem2 = []
-for musica in lista_album_curto:
+for musica in lista_album_preco:
     nome_musica2 = musica.text
     musicas_ordem2.append(nome_musica2)
 #print(musicas_ordem2)
@@ -69,12 +68,12 @@ musicas_ordem2 = [item.replace('"', "") for item in musicas_ordem2]
 
 print(musicas_ordem2)
 
-lista_album_curto = html_arrumado.find_all('td',
+duracao_preco = html_arrumado.find_all('td',
                                            {'style': 'padding-right: 10px; text-align: right; vertical-align: top;'})
 del musicas_ordem2[::2]
 
 musicas_ordem2 = []
-for musica in lista_album_curto:
+for musica in duracao_preco:
     nome_musica2 = musica.text
     musicas_ordem2.append(nome_musica2)
 del musicas_ordem2[::2]
@@ -102,11 +101,11 @@ musicas_ordem3 = [item.replace('"', "") for item in musicas_ordem3]
 
 print(musicas_ordem3)
 
-lista_album_nadando = html_arrumado.find_all('td',
+duracao_nadando = html_arrumado.find_all('td',
                                              {'style': 'padding-right: 10px; text-align: right; vertical-align: top;'})
 
 musicas_ordem3 = []
-for musica in lista_album_nadando:
+for musica in duracao_nadando:
     nome_musica3 = musica.text
     musicas_ordem3.append(nome_musica3)
 del musicas_ordem3[::2]
@@ -132,11 +131,11 @@ musicas_ordem4 = [item.replace('"', "") for item in musicas_ordem4]
 
 print(musicas_ordem4)
 
-lista_album_abalando = html_arrumado.find_all('td',
+duracao_abalando = html_arrumado.find_all('td',
                                               {'style': 'padding-right: 10px; text-align: right; vertical-align: top;'})
 
 musicas_ordem4 = []
-for musica in lista_album_abalando:
+for musica in duracao_abalando:
     nome_musica4 = musica.text
     musicas_ordem4.append(nome_musica4)
 del musicas_ordem4[::2]
@@ -162,11 +161,10 @@ musicas_ordem5 = [item.replace('"', "") for item in musicas_ordem5]
 
 print(musicas_ordem5)
 
-lista_album_bocas = html_arrumado.find_all('td',
-                                           {'style': 'padding-right: 10px; text-align: right; vertical-align: top;'})
+duracao_bocas = html_arrumado.find_all('td',{'style': 'padding-right: 10px; text-align: right; vertical-align: top;'})
 
 musicas_ordem5 = []
-for musica in lista_album_bocas:
+for musica in duracao_bocas:
     nome_musica5 = musica.text
     musicas_ordem5.append(nome_musica5)
 del musicas_ordem5[::2]
@@ -178,10 +176,10 @@ link6 = requests.get('https://pt.wikipedia.org/wiki/Tamo_A%C3%AD_na_Atividade',
 html_bruto = link6.text
 html_arrumado = BeautifulSoup(html_bruto, 'html.parser')
 
-lista_album_tamo = html_arrumado.find_all('td', {'style': 'text-align: left; vertical-align: top;'})
+lista_album_tamoai = html_arrumado.find_all('td', {'style': 'text-align: left; vertical-align: top;'})
 
 musicas_ordem6 = []
-for musica in lista_album_tamo:
+for musica in lista_album_tamoai:
     nome_musica6 = musica.text
     musicas_ordem6.append(nome_musica6)
 
@@ -191,11 +189,10 @@ musicas_ordem6 = [item.replace('"', "") for item in musicas_ordem6]
 
 print(musicas_ordem6)
 
-lista_album_tamo = html_arrumado.find_all('td',
-                                          {'style': 'padding-right: 10px; text-align: right; vertical-align: top;'})
+duracao_tamoai = html_arrumado.find_all('td', {'style': 'padding-right: 10px; text-align: right; vertical-align: top;'})
 
 musicas_ordem6 = []
-for musica in lista_album_tamo:
+for musica in duracao_tamoai:
     nome_musica6 = musica.text
     musicas_ordem6.append(nome_musica6)
 del musicas_ordem6[::2]
@@ -220,11 +217,10 @@ musicas_ordem7 = [item.replace('"', "") for item in musicas_ordem7]
 
 print(musicas_ordem7)
 
-lista_album_imunidade = html_arrumado.find_all('td', {
-    'style': 'padding-right: 10px; text-align: right; vertical-align: top;'})
+duracao_imunidade = html_arrumado.find_all('td', {'style': 'padding-right: 10px; text-align: right; vertical-align: top;'})
 
 musicas_ordem7 = []
-for musica in lista_album_imunidade:
+for musica in duracao_imunidade:
     nome_musica7 = musica.text
     musicas_ordem7.append(nome_musica7)
 del musicas_ordem7[::2]
@@ -249,11 +245,11 @@ musicas_ordem8 = [item.replace('"', "") for item in musicas_ordem8]
 
 print(musicas_ordem8)
 
-lista_album_ritmo = html_arrumado.find_all('td',
+duracao_ritmo = html_arrumado.find_all('td',
                                            {'style': 'padding-right: 10px; text-align: right; vertical-align: top;'})
 
 musicas_ordem8 = []
-for musica in lista_album_ritmo:
+for musica in duracao_ritmo:
     nome_musica8 = musica.text
     musicas_ordem8.append(nome_musica8)
 del musicas_ordem8[::2]
@@ -278,11 +274,10 @@ musicas_ordem9 = [item.replace('"', "") for item in musicas_ordem9]
 
 print(musicas_ordem9)
 
-lista_album_camisa = html_arrumado.find_all('td',
-                                            {'style': 'padding-right: 10px; text-align: right; vertical-align: top;'})
+duracao_camisa = html_arrumado.find_all('td', {'style': 'padding-right: 10px; text-align: right; vertical-align: top;'})
 
 musicas_ordem9 = []
-for musica in lista_album_camisa:
+for musica in duracao_camisa:
     nome_musica9 = musica.text
     musicas_ordem9.append(nome_musica9)
 del musicas_ordem9[::2]
@@ -294,10 +289,10 @@ link10 = requests.get('https://pt.wikipedia.org/wiki/La_Familia_013',
 html_bruto = link10.text
 html_arrumado = BeautifulSoup(html_bruto, 'html.parser')
 
-lista_album_la = html_arrumado.find_all('td', {'style': 'text-align: left; vertical-align: top;'})
+lista_album_013 = html_arrumado.find_all('td', {'style': 'text-align: left; vertical-align: top;'})
 
 musicas_ordem10 = []
-for musica in lista_album_la:
+for musica in lista_album_013:
     nome_musica10 = musica.text
     musicas_ordem10.append(nome_musica10)
 
@@ -307,10 +302,10 @@ musicas_ordem10 = [item.replace('"', "") for item in musicas_ordem10]
 
 print(musicas_ordem10)
 
-lista_album_la = html_arrumado.find_all('td', {'style': 'padding-right: 10px; text-align: right; vertical-align: top;'})
+duracao_013 = html_arrumado.find_all('td', {'style': 'padding-right: 10px; text-align: right; vertical-align: top;'})
 
 musicas_ordem10 = []
-for musica in lista_album_la:
+for musica in duracao_013:
     nome_musica10 = musica.text
     musicas_ordem10.append(nome_musica10)
 del musicas_ordem10[::2]
