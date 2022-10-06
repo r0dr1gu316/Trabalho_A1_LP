@@ -33,19 +33,19 @@ print(musicas_ordem)
 
 duracao_album_transp = html_arrumado.find_all('td', {'style': 'padding-right: 10px; text-align: right; vertical-align: top;'})
 
-musicas_ordem = []
+musicas_ordem_duracao = []
 for musica in duracao_album_transp:
     nome_musica = musica.text
-    musicas_ordem.append(nome_musica)
+    musicas_ordem_duracao.append(nome_musica)
 
 
-musicas_ordem = [item.replace("\xa0", "") for item in musicas_ordem]
-musicas_ordem = [item.replace("\n", "") for item in musicas_ordem]
-musicas_ordem = [item.replace('"', "") for item in musicas_ordem]
-del musicas_ordem [32:]
+musicas_ordem_duracao = [item.replace("\xa0", "") for item in musicas_ordem_duracao]
+musicas_ordem_duracao = [item.replace("\n", "") for item in musicas_ordem_duracao]
+musicas_ordem_duracao = [item.replace('"', "") for item in musicas_ordem_duracao]
+del musicas_ordem_duracao [32:]
 
-del musicas_ordem[::2]
-print(musicas_ordem)
+del musicas_ordem_duracao[::2]
+print(musicas_ordem_duracao)
 
 
 ##############################
