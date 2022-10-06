@@ -39,6 +39,7 @@ musicas_ordem = [item.replace("\xa0", "") for item in musicas_ordem]
 musicas_ordem = [item.replace("\n", "") for item in musicas_ordem]
 musicas_ordem = [item.replace('"', "") for item in musicas_ordem]
 print(musicas_ordem)
+
 ##############################
 link2 = requests.get('https://pt.wikipedia.org/wiki/Pre%C3%A7o_Curto..._Prazo_Longo',
                        headers = user)
@@ -67,9 +68,6 @@ for musica in lista_album_curto:
 print(musicas_ordem2)
 
 #################################
-
-user = {"user-agent": "Mozilla/5.0"}
-
 link3 = requests.get('https://pt.wikipedia.org/wiki/Nadando_com_os_Tubar%C3%B5es',
                        headers = user)
 html_bruto = link3.text
@@ -96,8 +94,6 @@ for musica in lista_album_nadando:
 
 print(musicas_ordem3)
 #######################
-user = {"user-agent": "Mozilla/5.0"}
-
 link4 = requests.get('https://pt.wikipedia.org/wiki/100%25_Charlie_Brown_Jr._-_Abalando_a_Sua_F%C3%A1brica',
                        headers = user)
 html_bruto = link4.text
@@ -125,7 +121,6 @@ for musica in lista_album_abalando:
 print(musicas_ordem4)
 
 ###############################
-
 link5 = requests.get('https://pt.wikipedia.org/wiki/Bocas_Ordin%C3%A1rias',
                        headers = user)
 html_bruto = link5.text
