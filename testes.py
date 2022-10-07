@@ -123,6 +123,21 @@ musicas_013 = pegar_info_nome('https://pt.wikipedia.org/wiki/La_Familia_013')
 
 tempos_013 = pegar_info_tempo('https://pt.wikipedia.org/wiki/La_Familia_013')
 #print(tempos_013)
+################################
+
+musicas_charlie = pegar_info_nome('https://pt.wikipedia.org/wiki/Ac%C3%BAstico_MTV:_Charlie_Brown_Jr.')
+#print(musicas_charlie)
+
+tempos_charlie = pegar_info_tempo('https://pt.wikipedia.org/wiki/Ac%C3%BAstico_MTV:_Charlie_Brown_Jr.')
+#print(tempos_charlie)
+################################
+
+musicas_basica = pegar_info_nome('https://pt.wikipedia.org/wiki/M%C3%BAsica_Popular_Cai%C3%A7ara_ao_Vivo')
+del musicas_basica[16:]
+#print(musicas_basica)
+
+tempos_basica = pegar_info_tempo('https://pt.wikipedia.org/wiki/M%C3%BAsica_Popular_Cai%C3%A7ara_ao_Vivo')
+#print(tempos_basica)
 
 
 
@@ -136,6 +151,8 @@ df_duracao_imunidade = pd.DataFrame(zip(musicas_imunidade, tempos_imunidade), co
 df_duracao_ritmo = pd.DataFrame(zip(musicas_ritmo, tempos_ritmo), columns = ['Nome da Música', 'Duração da Música'])
 df_duracao_camisa = pd.DataFrame(zip(musicas_camisa, tempos_camisa_novo), columns = ['Nome da Música', 'Duração da Música'])
 df_duracao_013 = pd.DataFrame(zip(musicas_013, tempos_013), columns = ['Nome da Música', 'Duração da Música'])
+df_duracao_charlie = pd.DataFrame(zip(musicas_charlie, tempos_charlie), columns = ['Nome da Música', 'Duração da Música'])
+df_duracao_basica = pd.DataFrame(zip(musicas_basica, tempos_basica), columns = ['Nome da Música', 'Duração da Música'])
 
 
 def minutagem(tempo):
@@ -167,9 +184,12 @@ print(minutagem(df_duracao_camisa))
 print('#'*50, '\n')
 print(minutagem(df_duracao_013))
 print('#'*50, '\n')
+print(minutagem(df_duracao_charlie))
+print('#'*50, '\n')
+print(minutagem(df_duracao_basica))
 
 dfs = [df_duracao_transpiracao, df_duracao_preco, df_duracao_nadando, df_duracao_abalando, df_duracao_bocas, df_duracao_tamoai,
-df_duracao_imunidade, df_duracao_ritmo, df_duracao_camisa, df_duracao_013] # list of dataframes
+df_duracao_imunidade, df_duracao_ritmo, df_duracao_camisa, df_duracao_013, df_duracao_charlie, df_duracao_basica] # list of dataframes
 df_merged = reduce(lambda  left,right: pd.merge(left,right,on=['Nome da Música', 'Duração da Música'],
                                             how='outer'), dfs)
 
