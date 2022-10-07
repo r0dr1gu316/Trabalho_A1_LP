@@ -3,7 +3,8 @@ from bs4 import BeautifulSoup
 import numpy as np
 import pandas as pd
 import re
-
+from functools import reduce
+from IPython.display import display 
 
 def pegar_info_nome(link):
     pag = requests.get(link)
@@ -40,85 +41,88 @@ def pegar_info_tempo(link):
 
 musicas_transpiracao = pegar_info_nome('https://pt.wikipedia.org/wiki/Transpira%C3%A7%C3%A3o_Cont%C3%ADnua_Prolongada')
 del musicas_transpiracao[16:]
-print(musicas_transpiracao)
+#print(musicas_transpiracao)
 
 tempos_transpiracao = pegar_info_tempo('https://pt.wikipedia.org/wiki/Transpira%C3%A7%C3%A3o_Cont%C3%ADnua_Prolongada')
 del tempos_transpiracao[16:]
-print(tempos_transpiracao)
+#print(tempos_transpiracao)
 
 ##############################
 
 musicas_preco = pegar_info_nome('https://pt.wikipedia.org/wiki/Pre%C3%A7o_Curto..._Prazo_Longo')
-print(musicas_preco)
+#print(musicas_preco)
 
 tempos_preco = pegar_info_tempo('https://pt.wikipedia.org/wiki/Pre%C3%A7o_Curto..._Prazo_Longo')
-print(tempos_preco)
+#print(tempos_preco)
 
 ##############################
 
 musicas_nadando = pegar_info_nome('https://pt.wikipedia.org/wiki/Nadando_com_os_Tubar%C3%B5es')
-print(musicas_nadando)
+#print(musicas_nadando)
 
 tempos_nadando = pegar_info_tempo('https://pt.wikipedia.org/wiki/Nadando_com_os_Tubar%C3%B5es')
-print(tempos_nadando)
+#print(tempos_nadando)
 
 ##############################
 
 musicas_abalando = pegar_info_nome('https://pt.wikipedia.org/wiki/100%25_Charlie_Brown_Jr._-_Abalando_a_Sua_F%C3%A1brica')
-print(musicas_abalando)
+#print(musicas_abalando)
 
 tempos_abalando = pegar_info_tempo('https://pt.wikipedia.org/wiki/100%25_Charlie_Brown_Jr._-_Abalando_a_Sua_F%C3%A1brica')
-print(tempos_abalando)
+#print(tempos_abalando)
 
 ##############################
 
 musicas_bocas = pegar_info_nome('https://pt.wikipedia.org/wiki/Bocas_Ordin%C3%A1rias')
-print(musicas_bocas)
+#print(musicas_bocas)
 
 tempos_bocas = pegar_info_tempo('https://pt.wikipedia.org/wiki/Bocas_Ordin%C3%A1rias')
-print(tempos_bocas)
+#print(tempos_bocas)
 
 ##############################
 
 musicas_tamoai = pegar_info_nome('https://pt.wikipedia.org/wiki/Tamo_A%C3%AD_na_Atividade')
-print(musicas_tamoai)
+#print(musicas_tamoai)
 
 tempos_tamoai = pegar_info_tempo('https://pt.wikipedia.org/wiki/Tamo_A%C3%AD_na_Atividade')
-print(tempos_tamoai)
+#print(tempos_tamoai)
 
 ##############################
 
 musicas_imunidade = pegar_info_nome('https://pt.wikipedia.org/wiki/Imunidade_Musical')
-print(musicas_imunidade)
+#print(musicas_imunidade)
 
 tempos_imunidade = pegar_info_tempo('https://pt.wikipedia.org/wiki/Imunidade_Musical')
-print(tempos_imunidade)
+#print(tempos_imunidade)
 
 ##############################
 
 musicas_ritmo = pegar_info_nome('https://pt.wikipedia.org/wiki/Ritmo,_Ritual_e_Responsa')
-print(musicas_ritmo)
+#print(musicas_ritmo)
 
 tempos_ritmo = pegar_info_tempo('https://pt.wikipedia.org/wiki/Ritmo,_Ritual_e_Responsa')
-print(tempos_ritmo)
+#print(tempos_ritmo)
 
 ##############################
 
 musicas_camisa = pegar_info_nome('https://pt.wikipedia.org/wiki/Camisa_10_Joga_Bola_At%C3%A9_na_Chuva')
-print(musicas_camisa)
+#print(musicas_camisa)
 
 tempos_camisa = pegar_info_tempo('https://pt.wikipedia.org/wiki/Camisa_10_Joga_Bola_At%C3%A9_na_Chuva')
-print(tempos_camisa)
+#limpando os dados
+tempos_camisa_novo = []
+for string in tempos_camisa:
+    a = string[1:]
+    tempos_camisa_novo.append(a)
+#print(tempos_camisa_novo)
 
 ################################
 
 musicas_013 = pegar_info_nome('https://pt.wikipedia.org/wiki/La_Familia_013')
-print(musicas_013)
+#print(musicas_013)
 
 tempos_013 = pegar_info_tempo('https://pt.wikipedia.org/wiki/La_Familia_013')
-print(tempos_013)
-
-print('#'*30)
+#print(tempos_013)
 
 
 
@@ -130,8 +134,9 @@ df_duracao_bocas= pd.DataFrame(zip(musicas_bocas, tempos_bocas), columns = ['Nom
 df_duracao_tamoai = pd.DataFrame(zip(musicas_tamoai, tempos_tamoai), columns = ['Nome da Música', 'Duração da Música'])
 df_duracao_imunidade = pd.DataFrame(zip(musicas_imunidade, tempos_imunidade), columns = ['Nome da Música', 'Duração da Música'])
 df_duracao_ritmo = pd.DataFrame(zip(musicas_ritmo, tempos_ritmo), columns = ['Nome da Música', 'Duração da Música'])
-df_duracao_camisa = pd.DataFrame(zip(musicas_camisa, tempos_camisa), columns = ['Nome da Música', 'Duração da Música'])
+df_duracao_camisa = pd.DataFrame(zip(musicas_camisa, tempos_camisa_novo), columns = ['Nome da Música', 'Duração da Música'])
 df_duracao_013 = pd.DataFrame(zip(musicas_013, tempos_013), columns = ['Nome da Música', 'Duração da Música'])
+
 
 def minutagem(tempo):
     mais_duradouras = tempo.sort_values(by = 'Duração da Música', ascending = False)
@@ -139,36 +144,33 @@ def minutagem(tempo):
     
     top_mais_duradouras = mais_duradouras[:3]
     top_menos_duradouras = menos_duradouras[:3]
-    print('Mais longas:','\n',top_mais_duradouras,'\n\n', 'Mais Curtas:', top_menos_duradouras)
-    return 
+    return print('Mais longas:','\n',top_mais_duradouras,'\n\n', 'Mais Curtas:', top_menos_duradouras)
 
-top_mais_duradouras_transpiracao = minutagem(df_duracao_transpiracao)
-print(top_mais_duradouras_transpiracao)
 
-top_mais_duradouras_preco = minutagem(df_duracao_preco)
-print(top_mais_duradouras_preco)
+print(minutagem(df_duracao_transpiracao))
+print('#'*50, '\n')
+print(minutagem(df_duracao_preco))
+print('#'*50, '\n')
+print(minutagem(df_duracao_nadando))
+print('#'*50, '\n')
+print(minutagem(df_duracao_abalando))
+print('#'*50, '\n')
+print(minutagem(df_duracao_bocas))
+print('#'*50, '\n')
+print(minutagem(df_duracao_tamoai))
+print('#'*50, '\n')
+print(minutagem(df_duracao_imunidade))
+print('#'*50, '\n')
+print(minutagem(df_duracao_ritmo))
+print('#'*50, '\n')
+print(minutagem(df_duracao_camisa))
+print('#'*50, '\n')
+print(minutagem(df_duracao_013))
+print('#'*50, '\n')
 
-top_mais_duradouras_nadando = minutagem(df_duracao_nadando)
-print(top_mais_duradouras_nadando)
+dfs = [df_duracao_transpiracao, df_duracao_preco, df_duracao_nadando, df_duracao_abalando, df_duracao_bocas, df_duracao_tamoai,
+df_duracao_imunidade, df_duracao_ritmo, df_duracao_camisa, df_duracao_013] # list of dataframes
+df_merged = reduce(lambda  left,right: pd.merge(left,right,on=['Nome da Música', 'Duração da Música'],
+                                            how='outer'), dfs)
 
-top_mais_duradouras_abalando = minutagem(df_duracao_abalando)
-print(top_mais_duradouras_abalando)
-
-top_mais_duradouras_bocas = minutagem(df_duracao_bocas)
-print(top_mais_duradouras_bocas)
-
-top_mais_duradouras_tamoai = minutagem(df_duracao_tamoai)
-print(top_mais_duradouras_tamoai)
-
-top_mais_duradouras_imunidade = minutagem(df_duracao_imunidade)
-print(top_mais_duradouras_imunidade)
-
-top_mais_duradouras_ritmo = minutagem(df_duracao_ritmo)
-print(top_mais_duradouras_ritmo)
-
-top_mais_duradouras_camisa = minutagem(df_duracao_camisa)
-print(top_mais_duradouras_camisa)
-
-top_mais_duradouras_013 = minutagem(df_duracao_013)
-print(top_mais_duradouras_013)
-
+print(minutagem(df_merged))
