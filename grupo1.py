@@ -5,6 +5,11 @@ import pandas as pd
 import re
 from functools import reduce
 from IPython.display import display 
+from coleta_manual import ordem_albunsdf
+from coleta_manual import premios_albumdf
+from coleta_manual import categorias_premio
+from coleta_manual import certificacoes_albuns
+from coleta_manual import data_lanc_albuns
 
 #Função responsavel por buscar o nome das musicas no site
 def pegar_info_nome(link):
