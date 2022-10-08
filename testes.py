@@ -144,7 +144,7 @@ def minutagem(tempo):
     top_menos_duradouras = menos_duradouras[:3]
     return print('Mais longas:','\n',top_mais_duradouras,'\n\n', 'Mais Curtas:', top_menos_duradouras)
 
-#resultado do top 3 mais longas e mais curtas
+#resultado do top 3 mais longas e mais curtas de cada album
 print(minutagem(df_duracao_transpiracao), '#'*50, '\n')
 
 print(minutagem(df_duracao_preco), '#'*50, '\n')
