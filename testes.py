@@ -6,6 +6,7 @@ import re
 from functools import reduce
 from IPython.display import display 
 
+#Função responsavel por buscar o nome das musicas no site
 def pegar_info_nome(link):
     pag = requests.get(link)
     html_bruto = pag.text
@@ -20,7 +21,7 @@ def pegar_info_nome(link):
     musicas_ordem = [item.replace('"', "") for item in musicas_ordem]
     return musicas_ordem
 
-
+#Função responsavel por buscar a minutagem das musicas no site
 def pegar_info_tempo(link):
     pag = requests.get(link)
     html_bruto = pag.text
@@ -36,7 +37,7 @@ def pegar_info_tempo(link):
     del musicas_ordem[::2]
     return musicas_ordem
 
-
+#Criando variaveis para o site de cada album e fazendo ja a limpeza dos dados
 ##############################
 musicas_transpiracao = pegar_info_nome('https://pt.wikipedia.org/wiki/Transpira%C3%A7%C3%A3o_Cont%C3%ADnua_Prolongada')
 del musicas_transpiracao[16:]
@@ -45,49 +46,41 @@ tempos_transpiracao = pegar_info_tempo('https://pt.wikipedia.org/wiki/Transpira%
 del tempos_transpiracao[16:]
 #print(tempos_transpiracao)
 
-##############################
 musicas_preco = pegar_info_nome('https://pt.wikipedia.org/wiki/Pre%C3%A7o_Curto..._Prazo_Longo')
 #print(musicas_preco)
 tempos_preco = pegar_info_tempo('https://pt.wikipedia.org/wiki/Pre%C3%A7o_Curto..._Prazo_Longo')
 #print(tempos_preco)
 
-##############################
 musicas_nadando = pegar_info_nome('https://pt.wikipedia.org/wiki/Nadando_com_os_Tubar%C3%B5es')
 #print(musicas_nadando)
 tempos_nadando = pegar_info_tempo('https://pt.wikipedia.org/wiki/Nadando_com_os_Tubar%C3%B5es')
 #print(tempos_nadando)
 
-##############################
 musicas_abalando = pegar_info_nome('https://pt.wikipedia.org/wiki/100%25_Charlie_Brown_Jr._-_Abalando_a_Sua_F%C3%A1brica')
 #print(musicas_abalando)
 tempos_abalando = pegar_info_tempo('https://pt.wikipedia.org/wiki/100%25_Charlie_Brown_Jr._-_Abalando_a_Sua_F%C3%A1brica')
 #print(tempos_abalando)
 
-##############################
 musicas_bocas = pegar_info_nome('https://pt.wikipedia.org/wiki/Bocas_Ordin%C3%A1rias')
 #print(musicas_bocas)
 tempos_bocas = pegar_info_tempo('https://pt.wikipedia.org/wiki/Bocas_Ordin%C3%A1rias')
 #print(tempos_bocas)
 
-##############################
 musicas_tamoai = pegar_info_nome('https://pt.wikipedia.org/wiki/Tamo_A%C3%AD_na_Atividade')
 #print(musicas_tamoai)
 tempos_tamoai = pegar_info_tempo('https://pt.wikipedia.org/wiki/Tamo_A%C3%AD_na_Atividade')
 #print(tempos_tamoai)
 
-##############################
 musicas_imunidade = pegar_info_nome('https://pt.wikipedia.org/wiki/Imunidade_Musical')
 #print(musicas_imunidade)
 tempos_imunidade = pegar_info_tempo('https://pt.wikipedia.org/wiki/Imunidade_Musical')
 #print(tempos_imunidade)
 
-##############################
 musicas_ritmo = pegar_info_nome('https://pt.wikipedia.org/wiki/Ritmo,_Ritual_e_Responsa')
 #print(musicas_ritmo)
 tempos_ritmo = pegar_info_tempo('https://pt.wikipedia.org/wiki/Ritmo,_Ritual_e_Responsa')
 #print(tempos_ritmo)
 
-##############################
 musicas_camisa = pegar_info_nome('https://pt.wikipedia.org/wiki/Camisa_10_Joga_Bola_At%C3%A9_na_Chuva')
 #print(musicas_camisa)
 tempos_camisa = pegar_info_tempo('https://pt.wikipedia.org/wiki/Camisa_10_Joga_Bola_At%C3%A9_na_Chuva')
@@ -98,18 +91,15 @@ for string in tempos_camisa:
     tempos_camisa_novo.append(a)
 #print(tempos_camisa_novo)
 
-################################
 musicas_013 = pegar_info_nome('https://pt.wikipedia.org/wiki/La_Familia_013')
 #print(musicas_013)
 tempos_013 = pegar_info_tempo('https://pt.wikipedia.org/wiki/La_Familia_013')
 #print(tempos_013)
 
-################################
 musicas_charlie = pegar_info_nome('https://pt.wikipedia.org/wiki/Ac%C3%BAstico_MTV:_Charlie_Brown_Jr.')
 #print(musicas_charlie)
 tempos_charlie = pegar_info_tempo('https://pt.wikipedia.org/wiki/Ac%C3%BAstico_MTV:_Charlie_Brown_Jr.')
 #print(tempos_charlie)
-################################
 
 musicas_basica = pegar_info_nome('https://pt.wikipedia.org/wiki/M%C3%BAsica_Popular_Cai%C3%A7ara_ao_Vivo')
 del musicas_basica[16:]
@@ -117,6 +107,7 @@ del musicas_basica[16:]
 tempos_basica = pegar_info_tempo('https://pt.wikipedia.org/wiki/M%C3%BAsica_Popular_Cai%C3%A7ara_ao_Vivo')
 #print(tempos_basica)
 
+#------------------------------------------------------------
 
 #Fazendo o DataFrame de cada album para pegarmos as musicas mais longas e mais curtas 
 df_duracao_transpiracao = pd.DataFrame(zip(musicas_transpiracao, tempos_transpiracao), columns = ['Nome da Música', 'Duração da Música'])
@@ -143,6 +134,7 @@ df_duracao_charlie = pd.DataFrame(zip(musicas_charlie, tempos_charlie), columns 
 
 df_duracao_basica = pd.DataFrame(zip(musicas_basica, tempos_basica), columns = ['Nome da Música', 'Duração da Música'])
 
+#----Pergunta 1 Item ii----#
 #função responsavel por listar todas as musicas em ordem de minutagem e pegar o top 3 musicas mais longas e mais curtas
 def minutagem(tempo):
     mais_duradouras = tempo.sort_values(by = 'Duração da Música', ascending = False)
@@ -153,30 +145,31 @@ def minutagem(tempo):
     return print('Mais longas:','\n',top_mais_duradouras,'\n\n', 'Mais Curtas:', top_menos_duradouras)
 
 #resultado do top 3 mais longas e mais curtas
-print(minutagem(df_duracao_transpiracao))
-print('#'*50, '\n')
-print(minutagem(df_duracao_preco))
-print('#'*50, '\n')
-print(minutagem(df_duracao_nadando))
-print('#'*50, '\n')
-print(minutagem(df_duracao_abalando))
-print('#'*50, '\n')
-print(minutagem(df_duracao_bocas))
-print('#'*50, '\n')
-print(minutagem(df_duracao_tamoai))
-print('#'*50, '\n')
-print(minutagem(df_duracao_imunidade))
-print('#'*50, '\n')
-print(minutagem(df_duracao_ritmo))
-print('#'*50, '\n')
-print(minutagem(df_duracao_camisa))
-print('#'*50, '\n')
-print(minutagem(df_duracao_013))
-print('#'*50, '\n')
-print(minutagem(df_duracao_charlie))
-print('#'*50, '\n')
-print(minutagem(df_duracao_basica))
+print(minutagem(df_duracao_transpiracao), '#'*50, '\n')
 
+print(minutagem(df_duracao_preco), '#'*50, '\n')
+
+print(minutagem(df_duracao_nadando), '#'*50, '\n')
+
+print(minutagem(df_duracao_abalando), '#'*50, '\n')
+
+print(minutagem(df_duracao_bocas), '#'*50, '\n')
+
+print(minutagem(df_duracao_tamoai), '#'*50, '\n')
+
+print(minutagem(df_duracao_imunidade), '#'*50, '\n')
+
+print(minutagem(df_duracao_ritmo), '#'*50, '\n')
+
+print(minutagem(df_duracao_camisa), '#'*50, '\n')
+
+print(minutagem(df_duracao_013), '#'*50, '\n')
+
+print(minutagem(df_duracao_charlie), '#'*50, '\n')
+
+print(minutagem(df_duracao_basica), '#'*50, '\n')
+
+#----Pergunta 1 Item iv----#
 #Unindo os DataFrames para que seja possivel pegar o Top 3 de todo a historiada banda
 dfs = [df_duracao_transpiracao, df_duracao_preco, df_duracao_nadando, df_duracao_abalando, df_duracao_bocas, df_duracao_tamoai,
 df_duracao_imunidade, df_duracao_ritmo, df_duracao_camisa, df_duracao_013, df_duracao_charlie, df_duracao_basica] # list of dataframes
