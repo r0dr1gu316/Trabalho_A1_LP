@@ -187,7 +187,15 @@ df_merged = reduce(lambda  left,right: pd.merge(left,right,on=['Nome da Música'
 print(minutagem(df_merged))
 
 #----Pergunta 1 Item v----#
+#Adicionando ao DataFrame as premiações das músicas através da lista criada em (coleta_manual)
+df = pd.DataFrame({'Ordem de Popularidade':posição_nas_mais_ouvidas, 'Duração da música':lista_duracoes, 'Premiação da musica':premiacoes_musicas}, index=[musicas_ordem])
+#display(df)
 
+df_albuns = pd.DataFrame({'Premio':premios_albumdf, 'Categoria':categorias_premio, 'Certificações':certificacoes_albuns, 'Lançamento':data_lanc_albuns}, index=[ordem_albunsdf])
+#display(df_albuns)
+
+df_albuns = pd.DataFrame({'Premio':premios_albumdf, 'Categoria':categorias_premio, 'Certificações':certificacoes_albuns, 'Lançamento':data_lanc_albuns}, index=[ordem_albunsdf])
+#display(df_albuns)
 
 #----Pergunta 1 Item vi----#
 
