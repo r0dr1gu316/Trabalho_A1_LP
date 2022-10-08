@@ -38,7 +38,7 @@ def pegar_info_tempo(link):
     return musicas_ordem
 
 #Criando variaveis para o site de cada album e fazendo ja a limpeza dos dados
-##############################
+
 musicas_transpiracao = pegar_info_nome('https://pt.wikipedia.org/wiki/Transpira%C3%A7%C3%A3o_Cont%C3%ADnua_Prolongada')
 del musicas_transpiracao[16:]
 #print(musicas_transpiracao)
