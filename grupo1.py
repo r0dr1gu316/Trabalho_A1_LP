@@ -134,6 +134,9 @@ df_duracao_charlie = pd.DataFrame(zip(musicas_charlie, tempos_charlie), columns 
 
 df_duracao_basica = pd.DataFrame(zip(musicas_basica, tempos_basica), columns = ['Nome da Música', 'Duração da Música'])
 
+#----Pergunta 1 Item i----#
+
+
 #----Pergunta 1 Item ii----#
 #função responsavel por listar todas as musicas em ordem de minutagem e pegar o top 3 musicas mais longas e mais curtas
 def minutagem(tempo):
@@ -169,6 +172,11 @@ print(minutagem(df_duracao_charlie), '#'*50, '\n')
 
 print(minutagem(df_duracao_basica), '#'*50, '\n')
 
+#----Pergunta 1 Item iii----#
+
+
+
+
 #----Pergunta 1 Item iv----#
 #Unindo os DataFrames para que seja possivel pegar o Top 3 de todo a historiada banda
 dfs = [df_duracao_transpiracao, df_duracao_preco, df_duracao_nadando, df_duracao_abalando, df_duracao_bocas, df_duracao_tamoai,
@@ -177,3 +185,10 @@ df_merged = reduce(lambda  left,right: pd.merge(left,right,on=['Nome da Música'
                                             how='outer'), dfs)
 
 print(minutagem(df_merged))
+
+#----Pergunta 1 Item v----#
+
+
+#----Pergunta 1 Item vi----#
+
+
