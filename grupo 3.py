@@ -4,12 +4,12 @@ from coleta_manual import data_lanc_albuns
 from IPython.display import display 
 
 
-#Grupo 3 Pergunta 1-
+#Grupo 3 Pergunta 1- Qual a data de lançamento de cada album?
 df_albuns = pd.DataFrame({'Lançamento':data_lanc_albuns}, index=[ordem_albunsdf])
 display(df_albuns)
 
 
-#Grupo 3 Pergunta 2- Qual a minutagem total de cada album
+#Grupo 3 Pergunta 2- Qual a minutagem total de cada album?
 def tempo_album(link):
     pag = requests.get(link)
     html_bruto = pag.text
