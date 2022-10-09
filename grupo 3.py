@@ -63,5 +63,5 @@ album_basica =  tempo_album('https://pt.wikipedia.org/wiki/M%C3%BAsica_Popular_C
 album_basica = ['47:25']
 print(album_basica)
 
-#Grupo 3 Pergunta 3- 
+#Grupo 3 Pergunta 3- Qual Abum mais longo e o mais curto
 
