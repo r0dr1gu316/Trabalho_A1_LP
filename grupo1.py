@@ -44,7 +44,6 @@ def pegar_info_tempo(link):
     return musicas_ordem
 
 #Criando variaveis para o site de cada album e fazendo a limpeza dos dados
-
 musicas_transpiracao = pegar_info_nome('https://pt.wikipedia.org/wiki/Transpira%C3%A7%C3%A3o_Cont%C3%ADnua_Prolongada')
 del musicas_transpiracao[16:]
 #print(musicas_transpiracao)
@@ -141,7 +140,6 @@ df_duracao_charlie = pd.DataFrame(zip(musicas_charlie, tempos_charlie), columns 
 df_duracao_basica = pd.DataFrame(zip(musicas_basica, tempos_basica), columns = ['Nome da Música', 'Duração da Música'])
 
 # Processo para coleta de dados da popularidade das músicas no spotify:
-
 cid = '4c3f7f276b104969844fda46b330e711'
 secret = '7ada4d46d6e1409b9424c359c03e28cb'
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id = cid, client_secret = secret))
@@ -266,7 +264,6 @@ df_completo = pd.concat([df_total, df_musicas], axis = 1)
 print(df_completo)
 
 ## Exibindo o top 3 de músicas mais ouvidas e menos ouvidas na historia da banda, atraves da popularidade
-
 def popularidade(exibicao):
     mais_populares = exibicao.nlargest(3, columns = 'Popularidade')
     menos_populares = exibicao.nsmallest(3, columns = 'Popularidade')
