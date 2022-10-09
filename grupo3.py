@@ -1,6 +1,7 @@
 import pandas as pd
 from coleta_manual import ordem_albunsdf
 from coleta_manual import data_lanc_albuns
+from coleta_manual import certificacoes_albuns
 from IPython.display import display 
 
 
@@ -63,5 +64,7 @@ album_basica =  tempo_album('https://pt.wikipedia.org/wiki/M%C3%BAsica_Popular_C
 album_basica = ['47:25']
 print(album_basica)
 
-#Grupo 3 Pergunta 3- Qual Abum mais longo e o mais curto
+#Grupo 3 Pergunta 3- Certificação de cada álbum:
 
+df_certificaçao = pd.DataFrame({'Certificações':certificacoes_albuns}, index=[ordem_albunsdf])
+print(df_certificacao)
