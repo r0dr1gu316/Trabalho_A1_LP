@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import re
 from functools import reduce
+from spotipy.oauth2 import SpotifyClientCredentials
 from IPython.display import display 
 from coleta_manual import ordem_albunsdf
 from coleta_manual import premios_albumdf
@@ -139,8 +140,58 @@ df_duracao_charlie = pd.DataFrame(zip(musicas_charlie, tempos_charlie), columns 
 
 df_duracao_basica = pd.DataFrame(zip(musicas_basica, tempos_basica), columns = ['Nome da Música', 'Duração da Música'])
 
+# Processo para coleta de dados da popularidade das músicas no spotify:
+
+cid = '4c3f7f276b104969844fda46b330e711'
+secret = '7ada4d46d6e1409b9424c359c03e28cb'
+spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id = cid, client_secret = secret))
+
+# link de cada álbum
+link_transpiracao = '09Nao8wNpzTz60nY8G2n7A'
+link_preco = '2hLNxoJZ5kZoBEX0XGBRNu'
+link_tubaroes = '5eF1HzO5mIQxs7bCwW9TJC'
+link_Cbjr = '0Dcy3ThOh8LS1qhXUbZWH7'
+link_bocas = '1FsdTRaD7Ec15uKh71PhkE'
+link_acustico = '0AFkktyrrPtQvpIBqpRrc7'
+link_tamoai = '6PsijYuoyIB4vgV5brmbhq'
+link_imunidade = '1l8K5fgYz4J0ZZyjMVd6Q1'
+link_RRR = '0wHl2FK2AEhwIiYISv7cJ4'
+link_camisa10 = '0tbiBipiOorOAnL7XWFbgt'
+link_MPC = '4j8gmVMG1HM5oNyKRYNJWB'
+link_013 = '53GOG940xY4LOpgD8YzQrJ'
+
+
+ 
+# Função para coletar as musicas mais populares da história da banda
+def popularidade_banda(spotify_id_list: list):
+    lista_popularidade_banda = []
+
+    for spotify_id in spotify_id_list:
+        lista_popularidade_banda += musicas_populares_album(spotify_id)
+        dados = {'Popularidade': lista_popularidade_banda}
+        df = pd.DataFrame(data=dados)
+    return df
+
 #----Pergunta 1 Item i----#
 
+# Função para coletar as musicas mais populares de cada álbum:
+def musicas_populares_album(spotify_id: str):
+    results = spotify.album_tracks(spotify_id)
+    tracks = results['items']
+    while results['next']:
+        results = spotify.next(results)
+        tracks.extend(results)
+
+    lista_popularidade = []
+
+    for track in tracks:
+        track_id = track['id']
+        track_page = spotify.track(track_id)
+        popularity = track_page['popularity']
+        lista_popularidade.append(popularity)
+    return lista_popularidade
+
+#print('Transpiração Contínua:',musicas_populares_album(link_transpiracao))
 
 #----Pergunta 1 Item ii----#
 #função responsavel por listar todas as musicas em ordem de minutagem e pegar o top 3 musicas mais longas e mais curtas
@@ -178,12 +229,56 @@ print(minutagem(df_duracao_charlie), '#'*50, '\n')
 print(minutagem(df_duracao_basica), '#'*50, '\n')
 
 #----Pergunta 1 Item iii----#
+# Função para coletar as musicas mais populares da história da banda
+def popularidade_banda(spotify_id_list: list):
+    lista_popularidade_banda = []
 
+    for spotify_id in spotify_id_list:
+        lista_popularidade_banda += musicas_populares_album(spotify_id)
+        dados = {'Popularidade': lista_popularidade_banda}
+        df = pd.DataFrame(data=dados)
+    return df
 
+df_musicas = popularidade_banda([link_transpiracao, link_preco, link_tubaroes, link_Cbjr, link_bocas, link_acustico, link_tamoai, link_imunidade, link_RRR, link_camisa10, link_MPC, link_013])
+#print(df_musicas)
 
+dfs = pd.concat([df_duracao_transpiracao, df_duracao_preco, df_duracao_nadando, df_duracao_abalando, df_duracao_bocas, df_duracao_tamoai,
+df_duracao_imunidade, df_duracao_ritmo, df_duracao_camisa, df_duracao_013, df_duracao_charlie, df_duracao_caicara],
+keys=['Transpiração Contínua Prolongada', 'Preço Curto... Prazo Longo', 'Nadando com os Tubarões', '100% Charlie Brown Jr. - Abalando a Sua Fábrica', 'Bocas Ordinárias',
+'Tamo Aí na Atividade', 'Imunidade Musical','Ritmo, Ritual e Responsa','Camisa 10 Joga Bola Até na Chuva','La Familia 013','Acústico MTV: Charlie Brown Jr.',
+'Música Popular Caiçara ao Vivo'])
+
+#Removendo linhas que estavam a mais no DataFrame para a concatenação:
+dfs = dfs.drop(dfs.index[[43, 45, 53, 126, 150, 153]])
+
+#Exportando para csv
+dfs.to_csv('Músicas_CBJR')
+df_total = pd.read_csv('Músicas_CBJR')
+print(df_total)
+
+#df_completo = pd.concat([dfs, df_musicas], axis = 1)
+#print(df_completo)
+
+# Concatenando o DataFrame de popularidade com o DataFrame total:
+df_completo = pd.concat([df_total, df_musicas], axis = 1)
+#pd.set_option('display.max_columns', 200)
+#pd.set_option('display.max_rows', 200)
+print(df_completo)
+
+## Exibindo o top 3 de músicas mais ouvidas e menos ouvidas na historia da banda, atraves da popularidade
+
+def popularidade(exibicao):
+    mais_populares = exibicao.nlargest(3, columns = 'Popularidade')
+    menos_populares = exibicao.nsmallest(3, columns = 'Popularidade')
+    return print('Mais Populares:', '\n', mais_populares, '\n\n', 'Menos Populares:', menos_populares)
+
+## Exibição de colunas e linhas totais no dataframe
+#pd.set_option('display.max_columns', 200)
+#pd.set_option('display.max_rows', 200)
+print(popularidade(df_completo))
 
 #----Pergunta 1 Item iv----#
-#Unindo os DataFrames para que seja possivel pegar o Top 3 de todo a historiada banda
+#Unindo os DataFrames para que seja possivel pegar o Top 3 de toda  historia a banda
 dfs = [df_duracao_transpiracao, df_duracao_preco, df_duracao_nadando, df_duracao_abalando, df_duracao_bocas, df_duracao_tamoai,
 df_duracao_imunidade, df_duracao_ritmo, df_duracao_camisa, df_duracao_013, df_duracao_charlie, df_duracao_basica] # list of dataframes
 df_merged = reduce(lambda  left,right: pd.merge(left,right,on=['Nome da Música', 'Duração da Música'],
