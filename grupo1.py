@@ -245,17 +245,21 @@ df_duracao_imunidade, df_duracao_ritmo, df_duracao_camisa, df_duracao_013, df_du
 keys=['Transpiração Contínua Prolongada', 'Preço Curto... Prazo Longo', 'Nadando com os Tubarões', '100% Charlie Brown Jr. - Abalando a Sua Fábrica', 'Bocas Ordinárias',
 'Tamo Aí na Atividade', 'Imunidade Musical','Ritmo, Ritual e Responsa','Camisa 10 Joga Bola Até na Chuva','La Familia 013','Acústico MTV: Charlie Brown Jr.',
 'Música Popular Caiçara ao Vivo'])
+print(dfs)
 
 #Removendo linhas que estavam a mais no DataFrame para a concatenação:
 dfs = dfs.drop(dfs.index[[43, 45, 53, 126, 150, 153]])
 
 #Exportando para csv
 dfs.to_csv('Músicas_CBJR')
+## Há 2 colunas com Numero de Faixas e Nome dos álbuns que
+#pd.set_option('display.max_columns', 200)
+#pd.set_option('display.max_rows', 200)
 df_total = pd.read_csv('Músicas_CBJR')
 print(df_total)
 
 #df_completo = pd.concat([dfs, df_musicas], axis = 1)
-#print(df_completo)
+print(df_completo)
 
 # Concatenando o DataFrame de popularidade com o DataFrame total:
 df_completo = pd.concat([df_total, df_musicas], axis = 1)
@@ -276,11 +280,10 @@ print(popularidade(df_completo))
 
 #----Pergunta 1 Item iv----#
 #Unindo os DataFrames para que seja possivel pegar o Top 3 de toda  historia a banda
-dfs = [df_duracao_transpiracao, df_duracao_preco, df_duracao_nadando, df_duracao_abalando, df_duracao_bocas, df_duracao_tamoai,
+dfs1 = [df_duracao_transpiracao, df_duracao_preco, df_duracao_nadando, df_duracao_abalando, df_duracao_bocas, df_duracao_tamoai,
 df_duracao_imunidade, df_duracao_ritmo, df_duracao_camisa, df_duracao_013, df_duracao_charlie, df_duracao_basica] # list of dataframes
 df_merged = reduce(lambda  left,right: pd.merge(left,right,on=['Nome da Música', 'Duração da Música'],
-                                            how='outer'), dfs)
-
+                                            how='outer'), dfs1)
 print(minutagem(df_merged))
 
 #----Pergunta 1 Item v----#
@@ -289,7 +292,26 @@ df_albuns = pd.DataFrame({'Premio':premios_albumdf, 'Categoria':categorias_premi
 #display(df_albuns)
 
 
-
 #----Pergunta 1 Item vi----#
+#Através da análise do dataframe completo podemos perceber que as músicas que possuem a maior popularidade, ou seja, as mais ouvidas, relacionadas com a duração da música não possuem duração. 
 
+dfs.to_csv('Músicas_CBJR')
+df_total = pd.read_csv('Músicas_CBJR')
+print(df_total)
 
+#df_completo = pd.concat([dfs, df_musicas], axis = 1)
+#print(df_completo)
+
+df_completo = pd.concat([df_total, df_musicas], axis = 1)
+#pd.set_option('display.max_columns', 200)
+#pd.set_option('display.max_rows', 200)
+print(df_completo)
+
+def popularidade(exibicao):
+    mais_populares = exibicao.nlargest(3, columns = 'Popularidade')
+    menos_populares = exibicao.nsmallest(3, columns = 'Popularidade')
+    return print('Mais Populares:', '\n', mais_populares, '\n\n', 'Menos Populares:', menos_populares)
+
+#pd.set_option('display.max_columns', 200)
+#pd.set_option('display.max_rows', 200)
+print(popularidade(df_completo))
